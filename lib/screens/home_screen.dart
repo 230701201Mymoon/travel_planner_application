@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:travel_planner/screens/add_trip_screen.dart';
 import 'package:travel_planner/screens/edit_trip_screen.dart';
 import '../models/trip.dart';
+import 'profile_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -23,6 +24,13 @@ class _HomeScreenState extends State<HomeScreen> {
       endDate: DateTime(2023, 8, 25),
       imageUrl:
           'https://images.unsplash.com/photo-1503899036084-c55cdd92da26?auto=format&fit=crop&w=1000&q=80',
+    ),
+    Trip(
+      name: 'New York City Escape',
+      startDate: DateTime(2023, 9, 5),
+      endDate: DateTime(2023, 9, 15),
+      imageUrl:
+          'https://images.unsplash.com/photo-1502685104226-ee32379fefbe?auto=format&fit=crop&w=1000&q=80',
     ),
   ];
 
@@ -57,6 +65,18 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text('My Trips'),
+        actions: [
+          IconButton(
+            icon: Icon(Icons.person),
+            onPressed: () {
+              // Placeholder for profile icon action
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => ProfileScreen()),
+              );
+            },
+          ),
+        ],
       ),
       body: ListView.builder(
         itemCount: trips.length,
